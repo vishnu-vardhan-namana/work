@@ -1,0 +1,21 @@
+# Dividing the video into frames and saved each frame in particular folder.
+import cv2
+def main():
+	path="C:/Users/vishnu/Desktop/Nature.mp4"
+	output_path="C:/Users/vishnu/Desktop/photos/"
+	frame_count=0
+	cam=cv2.VideoCapture(path)
+	while(cam.isOpened()):
+		ret,frame=cam.read()
+		if ret:
+			frame_count+=1
+			img_name=output_path+str(frame_count)+".jpg"
+			cv2.imwrite(img_name,frame)
+			print("{} image is successfully saved".format(frame_count))
+		else: 
+			break
+	print("SuccessFully All video frames are divided")	
+	cam.release()
+if __name__=="__main__":
+	main()
+
